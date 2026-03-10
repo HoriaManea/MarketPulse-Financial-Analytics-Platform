@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardContent,
@@ -13,50 +12,34 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Badge } from "../../components/ui/badge";
+import fetchCrypto from "../../externalApi/cryptoService";
+import { useQuery } from "@tanstack/react-query";
 
-const stats = [
-  {
-    title: "Total Balance",
-    value: "$12,456",
-    change: "+12.4%",
-    trend: "up",
-    icon: Wallet,
-    description: "From last month",
-    gradient: "from-green-500 to-emerald-500",
-  },
-  {
-    title: "Monthly Income",
-    value: "$4,200",
-    change: "+8.2%",
-    trend: "up",
-    icon: ArrowUpIcon,
-    description: "This month",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
-    title: "Monthly Expenses",
-    value: "$2,843",
-    change: "-3.1%",
-    trend: "down",
-    icon: ArrowDownIcon,
-    description: "This month",
-    gradient: "from-orange-500 to-red-500",
-  },
-  {
-    title: "Savings Rate",
-    value: "32.4%",
+type Crypto = {
+  symbol: string;
+  price: string;
+};
+
+export default function StatsCards() {
+  const { data } = useQuery<Crypto[]>({
+    queryKey: ["crypto"],
+    queryFn: fetchCrypto,
+    refetchInterval: 1000,
+  });
+
+  const stats = data?.map((el) => ({
+    title: el.symbol,
+    value: el.price,
     change: "+5.7%",
     trend: "up",
     icon: Target,
     description: "Of total income",
     gradient: "from-purple-500 to-pink-500",
-  },
-];
+  }));
 
-export default function StatsCards() {
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-6 xl:grid-cols-4">
-      {stats.map((stat) => (
+      {stats?.map((stat) => (
         <Card
           key={stat.title}
           className="from-secondary/30 gap-2 overflow-hidden rounded-lg bg-gradient-to-br shadow-none transition-all duration-500 hover:scale-105"
