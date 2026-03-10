@@ -1,8 +1,7 @@
-'use client';
-import { ReactNode, useState } from 'react';
-import PersonalSidebar from './personal-sidebar';
-import PersonalHeader from './personal-header';
-import PersonalFooter from './personal-footer';
+import { ReactNode, useState } from "react";
+import PersonalSidebar from "./personal-sidebar";
+import PersonalHeader from "./personal-header";
+import PersonalFooter from "./personal-footer";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -15,7 +14,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="min-h-screen w-full overflow-hidden">
       <div
         className={`mt-16 grid min-h-screen grid-cols-1 transition-all duration-500 ${
-          collapsed ? 'ml-20 lg:grid-cols-[1fr]' : 'lg:grid-cols-[16rem_1fr]'
+          collapsed ? "ml-20 lg:grid-cols-[1fr]" : "lg:grid-cols-[16rem_1fr]"
         }`}
       >
         <div>
