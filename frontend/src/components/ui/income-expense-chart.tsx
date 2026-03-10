@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardContent,
@@ -15,21 +14,6 @@ import { useQuery } from "@tanstack/react-query";
 import { lastTwelveMonthsService } from "../../externalApi/lastTwelveMonthsService";
 import type { LastYearCrypto } from "@/types/crypto";
 
-// const data = [
-//   { month: "Jan", income: 4200, expenses: 2843, net: 1357 },
-//   { month: "Feb", income: 3800, expenses: 2950, net: 850 },
-//   { month: "Mar", income: 5200, expenses: 3100, net: 2100 },
-//   { month: "Apr", income: 4800, expenses: 2650, net: 2150 },
-//   { month: "May", income: 5100, expenses: 2900, net: 2200 },
-//   { month: "Jun", income: 4700, expenses: 2750, net: 1950 },
-//   { month: "Jul", income: 5300, expenses: 3000, net: 2300 },
-//   { month: "Aug", income: 5300, expenses: 3000, net: 2300 },
-//   { month: "Sept", income: 5300, expenses: 3000, net: 2300 },
-//   { month: "Oct", income: 5300, expenses: 3000, net: 2300 },
-//   { month: "Nov", income: 5300, expenses: 3000, net: 2300 },
-//   { month: "Dec", income: 5300, expenses: 3000, net: 2300 },
-// ];
-
 export default function IncomeExpenseChart() {
   const { data } = useQuery<LastYearCrypto[]>({
     queryKey: ["cryptoLastYear"],
@@ -42,15 +26,15 @@ export default function IncomeExpenseChart() {
 
     return {
       month,
-      income: Number(el[2]), // high
-      expenses: Number(el[3]), // low
+      income: Number(el[2]),
+      expenses: Number(el[3]),
       net: Number(el[2]) - Number(el[3]),
     };
   });
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader className="flex flex-col items-center justify-between gap-3 md:flex-row">
-        <CardTitle>Income vs Expenses</CardTitle>
+        <CardTitle>See Last Year Results</CardTitle>
         <div className="flex items-center justify-center gap-2">
           <div className="flex items-center gap-2">
             <div className="size-3 rounded-full bg-green-500"></div>
