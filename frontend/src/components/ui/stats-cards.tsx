@@ -6,7 +6,7 @@ import {
 } from "../../components/ui/card";
 import { Target, TrendingUp } from "lucide-react";
 import { Badge } from "../../components/ui/badge";
-import fetchCrypto from "../../externalApi/cryptoService";
+import fetchCrypto from "../../externalApi/currentCryptoPriceService";
 import { useQuery } from "@tanstack/react-query";
 import type { Crypto } from "../../types/crypto";
 import { TokenETH, TokenBNB, TokenBTC, TokenSOL } from "@web3icons/react";
