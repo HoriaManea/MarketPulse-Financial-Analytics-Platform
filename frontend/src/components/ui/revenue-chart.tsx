@@ -1,5 +1,3 @@
-"use client";
-
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./button";
@@ -53,7 +51,9 @@ export const RevenueChart = memo(() => {
                     ${item.value.toLocaleString()}
                   </div>
                   <div
-                    className={`text-xs ${item.growth > 0 ? "text-green-500" : "text-red-500"}`}
+                    className={`text-xs ${
+                      item.growth > 0 ? "text-green-500" : "text-red-500"
+                    }`}
                   >
                     {item.growth > 0 ? "+" : ""}
                     {item.growth}%

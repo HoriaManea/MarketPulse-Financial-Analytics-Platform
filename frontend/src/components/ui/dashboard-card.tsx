@@ -1,5 +1,3 @@
-"use client";
-
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp } from "lucide-react";
@@ -69,7 +67,10 @@ export const DashboardCard = memo(({ stat, index }: DashboardCardProps) => {
               initial={{ width: 0 }}
               animate={{ width: `${65 + index * 8}%` }}
               transition={{ duration: 1, delay: index * 0.1 }}
-              className={`h-full rounded-full ${stat.color.replace("text-", "bg-")}`}
+              className={`h-full rounded-full ${stat.color.replace(
+                "text-",
+                "bg-",
+              )}`}
             />
           </div>
         </div>

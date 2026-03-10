@@ -1,5 +1,3 @@
-"use client";
-
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { Shield, Database, Zap, Activity } from "lucide-react";
@@ -60,7 +58,10 @@ export const SystemStatus = memo(() => {
                     initial={{ width: 0 }}
                     animate={{ width: `${item.percentage}%` }}
                     transition={{ duration: 1, delay: index * 0.1 }}
-                    className={`h-full rounded-full ${item.color.replace("text-", "bg-")}`}
+                    className={`h-full rounded-full ${item.color.replace(
+                      "text-",
+                      "bg-",
+                    )}`}
                   />
                 </div>
                 <span

@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import { Bell, User, Calendar, Moon, Sun, DollarSign } from "lucide-react";
 import { useTheme } from "next-themes";
