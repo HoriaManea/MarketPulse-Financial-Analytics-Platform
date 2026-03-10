@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import AdminDashboard from "./components/dashboard";
+import AdminDashboard from "./pages/dashboard";
 import { useQuery } from "@tanstack/react-query";
-import LogIn from "./components/LogIn";
+import LogIn from "./pages/LogIn";
 
 async function fetchData() {
   const res = await fetch(
