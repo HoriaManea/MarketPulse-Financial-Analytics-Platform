@@ -4,21 +4,11 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
-import {
-  ArrowUpIcon,
-  ArrowDownIcon,
-  Wallet,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+import { Target, TrendingUp } from "lucide-react";
 import { Badge } from "../../components/ui/badge";
 import fetchCrypto from "../../externalApi/cryptoService";
 import { useQuery } from "@tanstack/react-query";
-
-type Crypto = {
-  symbol: string;
-  price: string;
-};
+import type { Crypto } from "../../types/crypto";
 
 export default function StatsCards() {
   const { data } = useQuery<Crypto[]>({

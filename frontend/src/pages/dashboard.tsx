@@ -6,7 +6,7 @@ import RecentTransactions from "../components/ui/recent-transactions";
 import SavingsGoals from "../components/ui/savings-goals";
 import StatsCards from "../components/ui/stats-cards";
 
-export default function PersonalFinanceDashboard() {
+export default function Dashboard() {
   return (
     <DashboardLayout>
       <div className="space-y-3 md:space-y-6">
