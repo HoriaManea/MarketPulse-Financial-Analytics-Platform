@@ -1,10 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createChart, AreaSeries, CandlestickSeries } from "lightweight-charts";
+import { useQuery } from "@tanstack/react-query";
+import lastTwelveMonthsService from "../../externalApi/lastTwelveMonthsService.ts";
 
 const TradingChart = () => {
+  const { data } = useQuery({
+    queryKey: ["cryptoLastYeare"],
+    queryFn: lastTwelveMonthsService,
+    refetchInterval: 122000,
+  });
+
   const chartContainerRef = useRef();
 
   useEffect(() => {
+    if (!data) return;
     const chart = createChart(chartContainerRef.current, {
       width: chartContainerRef.current.clientWidth,
       height: 400,
@@ -37,20 +46,18 @@ const TradingChart = () => {
       { time: "2018-12-31", value: 22.67 },
     ]);
 
-    candleSeries.setData([
-      { time: "2018-12-29", open: 100, high: 110, low: 90, close: 105 },
-      { time: "2018-12-30", open: 105, high: 112, low: 101, close: 109 },
-      {
-        time: "2018-12-31",
-        open: 109.87,
-        high: 114.69,
-        low: 85.66,
-        close: 111.26,
-      },
-    ]);
+    const formattedData = data.map((el) => ({
+      time: Math.floor(el[0] / 1000),
+      open: parseFloat(el[1]),
+      high: parseFloat(el[2]),
+      low: parseFloat(el[3]),
+      close: parseFloat(el[4]),
+    }));
+
+    candleSeries.setData(formattedData);
 
     return () => chart.remove();
-  }, []);
+  }, [data]);
 
   return (
     <div

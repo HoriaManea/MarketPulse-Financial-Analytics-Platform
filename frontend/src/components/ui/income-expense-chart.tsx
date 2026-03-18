@@ -11,7 +11,7 @@ import {
   ChartTooltipContent,
 } from "../../components/ui/chart";
 import { useQuery } from "@tanstack/react-query";
-import { lastTwelveMonthsService } from "../../externalApi/lastTwelveMonthsService";
+import lastTwelveMonthsService from "../../externalApi/lastTwelveMonthsService.ts";
 import type { LastYearCrypto } from "@/types/crypto";
 
 export default function IncomeExpenseChart() {

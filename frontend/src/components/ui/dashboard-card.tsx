@@ -18,8 +18,6 @@ interface DashboardCardProps {
 export const DashboardCard = memo(({ stat, index }: DashboardCardProps) => {
   const Icon = stat.icon;
 
-  console.log("Re renderos");
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

@@ -1,4 +1,4 @@
-export async function lastTwelveMonthsService() {
+export default async function lastTwelveMonthsService() {
   const res = await fetch(
     "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1M&limit=12",
   );

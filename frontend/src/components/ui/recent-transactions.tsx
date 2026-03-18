@@ -12,12 +12,10 @@ import { Link } from "react-router-dom";
 import type { ArticlesResponse } from "@/types/crypto";
 
 export default function RecentTransactions() {
-  const { data, isLoading } = useQuery<ArticlesResponse>({
+  const { data } = useQuery<ArticlesResponse>({
     queryKey: ["cryptoNews"],
     queryFn: cryptoNewsService,
   });
-
-  if (isLoading) console.log("Loading news . . .");
 
   const news = data?.articles.map((el) => {
     return {
