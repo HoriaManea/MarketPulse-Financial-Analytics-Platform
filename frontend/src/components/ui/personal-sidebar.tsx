@@ -1,16 +1,17 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import {
-  LayoutDashboard,
-  Wallet,
-  Target,
-  BarChart3,
   Settings,
-  PiggyBank,
   ChevronRight,
   Bell,
   User,
   Menu,
   DollarSign,
+  Coins,
+  Globe,
+  Package,
+  TrendingUp,
+  Newspaper,
+  LogOut,
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "../../components/ui/button";
@@ -21,12 +22,12 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: LayoutDashboard, current: true },
-  { name: "Transactions", href: "#", icon: Wallet, current: false },
-  { name: "Budget", href: "#", icon: BarChart3, current: false },
-  { name: "Goals", href: "#", icon: Target, current: false },
-  { name: "Investments", href: "#", icon: PiggyBank, current: false },
-  { name: "Settings", href: "#", icon: Settings, current: false },
+  { name: "Cryptocurrencies", href: "#", icon: Coins, current: true },
+  { name: "Forex", href: "/forexdashboard", icon: Globe, current: false },
+  { name: "Commodities", href: "/commodities", icon: Package, current: false },
+  { name: "Stocks", href: "/stocks", icon: TrendingUp, current: false },
+  { name: "News", href: "/news", icon: Newspaper, current: false },
+  { name: "Settings", href: "/settings", icon: Settings, current: false },
 ];
 
 export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
@@ -147,8 +148,9 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
           {/* Footer */}
           {!collapsed && (
             <div className="h-20 w-full border-t p-5">
-              <div className="border-primary/30 from-primary/20 text-primary w-full rounded-sm border bg-gradient-to-b p-3 text-center text-xs">
-                💰 Save more this month !
+              <div className="border-primary/30 from-primary/20 text-primary flex items-center justify-center gap-2 w-full rounded-md border bg-gradient-to-b p-3 text-sm transition hover:bg-primary/10 cursor-pointer">
+                <LogOut className="w-4 h-4" />
+                <span>Log out</span>
               </div>
             </div>
           )}
