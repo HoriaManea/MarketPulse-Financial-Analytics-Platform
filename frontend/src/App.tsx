@@ -10,12 +10,12 @@ import NewsDashboard from "./pages/NewsDashboard";
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<CryptoDashboard />} />
-      <Route path="/forexdashboard" element={<ForexDashboard />} />
-      <Route path="/commodities" element={<CommoditiesDashodard />} />
-      <Route path="/stocks" element={<StocksDashboard />} />
-      <Route path="/news" element={<NewsDashboard />} />
-      <Route path="/settings" element={<Settings />} />
+      <Route path="/cryptocurrency-dashboard" element={<CryptoDashboard />} />
+      <Route path="/forex-dashboard" element={<ForexDashboard />} />
+      <Route path="/commodities-dashboard" element={<CommoditiesDashodard />} />
+      <Route path="/stocks-dashboard" element={<StocksDashboard />} />
+      <Route path="/news-dashboard" element={<NewsDashboard />} />
+      <Route path="/settings-dashboard" element={<Settings />} />
       <Route path="/login" element={<LogIn />} />
     </Routes>
   );

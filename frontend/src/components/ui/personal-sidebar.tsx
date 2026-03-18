@@ -22,12 +22,32 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: "Cryptocurrencies", href: "#", icon: Coins, current: true },
-  { name: "Forex", href: "/forexdashboard", icon: Globe, current: false },
-  { name: "Commodities", href: "/commodities", icon: Package, current: false },
-  { name: "Stocks", href: "/stocks", icon: TrendingUp, current: false },
-  { name: "News", href: "/news", icon: Newspaper, current: false },
-  { name: "Settings", href: "/settings", icon: Settings, current: false },
+  {
+    name: "Cryptocurrencies",
+    href: "/cryptocurrency-dashboard",
+    icon: Coins,
+    current: true,
+  },
+  { name: "Forex", href: "/forex-dashboard", icon: Globe, current: false },
+  {
+    name: "Commodities",
+    href: "/commodities-dashboard",
+    icon: Package,
+    current: false,
+  },
+  {
+    name: "Stocks",
+    href: "/stocks-dashboard",
+    icon: TrendingUp,
+    current: false,
+  },
+  { name: "News", href: "/news-dashboard", icon: Newspaper, current: false },
+  {
+    name: "Settings",
+    href: "/settings-dashboard",
+    icon: Settings,
+    current: false,
+  },
 ];
 
 export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
