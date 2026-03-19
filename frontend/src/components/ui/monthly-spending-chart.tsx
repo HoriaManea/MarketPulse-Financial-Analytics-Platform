@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import {
   Card,
   CardContent,
@@ -12,14 +13,14 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import marketCapDominanceService from "../../externalApi/MarketCapDominanceService";
 
 const data = [
-  { name: "Food & Dining", value: 320, color: "#3b82f6" },
-  { name: "Transportation", value: 180, color: "#10b981" },
-  { name: "Entertainment", value: 120, color: "#8b5cf6" },
-  { name: "Shopping", value: 450, color: "#ef4444" },
-  { name: "Utilities", value: 220, color: "#f59e0b" },
-  { name: "Healthcare", value: 150, color: "#ec4899" },
+  { name: "BTC", value: 52.3, color: "#f7931a" },
+  { name: "ETH", value: 18.7, color: "#627eea" },
+  { name: "BNB", value: 4.2, color: "#f3ba2f" },
+  { name: "SOL", value: 3.1, color: "#00ffa3" },
+  { name: "Others", value: 21.7, color: "#888888" },
 ];
 
 interface CustomTooltipProps {
@@ -34,7 +35,7 @@ interface CustomTooltipProps {
 
 const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
-    const data = payload[0]; // directly access payload[0] instead of payload[0].payload
+    const data = payload[0];
     return (
       <div className="bg-background rounded-md border border-green-500/70 p-3 shadow-xl">
         <p className="font-medium">{data.name}</p>
@@ -50,11 +51,18 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   return null;
 };
 
-export default function MonthlySpendingChart() {
+export default function MarketCapDominance() {
+  // const { data } = useQuery({
+  //   queryKey: ["cryptoStats"],
+  //   queryFn: marketCapDominanceService,
+  // });
+
+  // console.log(data);
+
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader>
-        <CardTitle>Monthly Spending by Category</CardTitle>
+        <CardTitle>Market Cap Dominance</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-40 md:h-60">
@@ -85,12 +93,12 @@ export default function MonthlySpendingChart() {
 
         <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
           <div className="text-center">
-            <p className="text-2xl font-bold">$1,440</p>
-            <p className="text-muted-foreground text-sm">Total Spent</p>
+            <p className="text-2xl font-bold">$2.41T</p>
+            <p className="text-muted-foreground text-sm">Total Market Cap</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-green-500">$760</p>
-            <p className="text-muted-foreground text-sm">Remaining Budget</p>
+            <p className="text-2xl font-bold text-blue-500">$98B</p>
+            <p className="text-muted-foreground text-sm">24h Volume</p>
           </div>
         </div>
       </CardContent>
