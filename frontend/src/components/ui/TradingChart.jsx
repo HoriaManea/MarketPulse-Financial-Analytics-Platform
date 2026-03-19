@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { createChart, AreaSeries, CandlestickSeries } from "lightweight-charts";
 import { useQuery } from "@tanstack/react-query";
-import lastTwelveMonthsService from "../../externalApi/lastTwelveMonthsService.ts";
+import tradingViewCryptoService from "../../externalApi/tradingViewCryptoService.ts";
 import "../../index.css";
 
 const TradingChart = () => {
   const [crypto, setCryto] = useState("BTC");
+  const [period, setPeriod] = useState("Last Month");
 
   const { data } = useQuery({
-    queryKey: ["cryptoLastYeare", crypto],
-    queryFn: () => lastTwelveMonthsService({ crypto }),
+    queryKey: ["cryptoLastYear", crypto, period],
+    queryFn: () => tradingViewCryptoService({ crypto, period }),
     refetchInterval: 122000,
   });
 
@@ -59,10 +60,16 @@ const TradingChart = () => {
 
     candleSeries.setData(formattedData);
 
+    const timeScale = chart.timeScale();
+
+    timeScale.setVisibleRange({
+      from: formattedData[0].time,
+      to: formattedData[formattedData.length - 1].time,
+    });
+
     return () => chart.remove();
   }, [data]);
 
-  console.log(crypto);
   return (
     <div
       ref={chartContainerRef}
@@ -108,14 +115,24 @@ const TradingChart = () => {
           onBlur={(e) =>
             (e.target.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)")
           }
+          onChange={(e) => setPeriod(e.target.value)}
         >
-          <option style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}>
+          <option
+            value={"Last Month"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
             Last Month
           </option>
-          <option style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}>
+          <option
+            value={"Last Week"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
             Last Week
           </option>
-          <option style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}>
+          <option
+            value={"Last Day"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
             Last Day
           </option>
         </select>

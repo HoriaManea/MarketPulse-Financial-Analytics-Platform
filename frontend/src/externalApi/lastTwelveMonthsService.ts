@@ -1,12 +1,6 @@
-type CryptopParam = {
-  crypto: string;
-};
-
-export default async function lastTwelveMonthsService({
-  crypto,
-}: CryptopParam) {
+export default async function lastTwelveMonthsService() {
   const res = await fetch(
-    `https://api.binance.com/api/v3/klines?symbol=${crypto}USDT&interval=1M&limit=12`,
+    "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1M&limit=12",
   );
 
   if (!res.ok) {
