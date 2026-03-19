@@ -1,12 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createChart, AreaSeries, CandlestickSeries } from "lightweight-charts";
 import { useQuery } from "@tanstack/react-query";
 import lastTwelveMonthsService from "../../externalApi/lastTwelveMonthsService.ts";
+import "../../index.css";
 
 const TradingChart = () => {
+  const [crypto, setCryto] = useState("BTC");
+
   const { data } = useQuery({
-    queryKey: ["cryptoLastYeare"],
-    queryFn: lastTwelveMonthsService,
+    queryKey: ["cryptoLastYeare", crypto],
+    queryFn: () => lastTwelveMonthsService({ crypto }),
     refetchInterval: 122000,
   });
 
@@ -59,6 +62,7 @@ const TradingChart = () => {
     return () => chart.remove();
   }, [data]);
 
+  console.log(crypto);
   return (
     <div
       ref={chartContainerRef}
@@ -68,8 +72,107 @@ const TradingChart = () => {
         background: "#0f172a",
         borderRadius: "10px",
         overflow: "hidden",
+        padding: "10px",
       }}
-    />
+    >
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <select
+          style={{
+            appearance: "none",
+            background: "linear-gradient(145deg, #0061fc, #0f172a)",
+            color: "#e2e8f0",
+            border: "1px solid #334155",
+            borderRadius: "10px",
+            padding: "10px 36px 10px 14px",
+            fontSize: "14px",
+            fontWeight: "500",
+            cursor: "pointer",
+            outline: "none",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+            transition: "all 0.2s ease",
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg fill='%23cbd5f5' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>\")",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right 10px center",
+          }}
+          onMouseEnter={(e) => (e.target.style.border = "1px solid #6366f1")}
+          onMouseLeave={(e) => (e.target.style.border = "1px solid #334155")}
+          onFocus={(e) => (e.target.style.boxShadow = "0 0 0 2px #6366f1")}
+          onBlur={(e) =>
+            (e.target.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)")
+          }
+        >
+          <option style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}>
+            Last Month
+          </option>
+          <option style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}>
+            Last Week
+          </option>
+          <option style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}>
+            Last Day
+          </option>
+        </select>
+        <select
+          style={{
+            appearance: "none",
+            background: "linear-gradient(145deg, #0061fc, #0f172a)",
+            color: "#e2e8f0",
+            border: "1px solid #334155",
+            borderRadius: "10px",
+            padding: "10px 36px 10px 14px",
+            fontSize: "14px",
+            fontWeight: "500",
+            cursor: "pointer",
+            outline: "none",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+            transition: "all 0.2s ease",
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg fill='%23cbd5f5' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>\")",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right 10px center",
+          }}
+          onMouseEnter={(e) => (e.target.style.border = "1px solid #6366f1")}
+          onMouseLeave={(e) => (e.target.style.border = "1px solid #334155")}
+          onFocus={(e) => (e.target.style.boxShadow = "0 0 0 2px #6366f1")}
+          onBlur={(e) =>
+            (e.target.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)")
+          }
+          onChange={(e) => setCryto(e.target.value)}
+        >
+          <option
+            value={"BTC"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
+            BTC
+          </option>
+          <option
+            value={"ETH"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
+            ETH
+          </option>
+          <option
+            value={"SOL"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
+            SOL
+          </option>
+          <option
+            value={"BNB"}
+            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
+          >
+            BNB
+          </option>
+        </select>
+      </div>
+    </div>
   );
 };
 
