@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import {
   Card,
   CardContent,
@@ -13,7 +12,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import marketCapDominanceService from "../../externalApi/MarketCapDominanceService";
 
 const data = [
   { name: "BTC", value: 52.3, color: "#f7931a" },
@@ -52,13 +50,6 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 };
 
 export default function MarketCapDominance() {
-  // const { data } = useQuery({
-  //   queryKey: ["cryptoStats"],
-  //   queryFn: marketCapDominanceService,
-  // });
-
-  // console.log(data);
-
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader>
@@ -72,7 +63,7 @@ export default function MarketCapDominance() {
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius="50%" // relative to chart size
+                innerRadius="50%"
                 outerRadius="100%"
                 paddingAngle={2}
                 dataKey="value"

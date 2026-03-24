@@ -41,40 +41,40 @@ export default function RecentTransactions() {
           </div>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="max-h-[25rem] space-y-3 overflow-auto p-3">
+          <div className="max-h-[25rem] overflow-y-auto p-3 space-y-3">
             {news?.map((el) => (
-              <Link to={el.link}>
-                <div
-                  key={el.id}
-                  className="group mb-4 from-secondary/30 hover:border-primary/50 flex items-center justify-between rounded-md border bg-gradient-to-r p-2"
-                >
-                  <div className="flex items-center gap-3">
-                    <div>
-                      <Globe className="w-5 h-5 text-blue-600" />
+              <Link to={el.link} key={el.id} className="block">
+                <div className="group relative flex items-center justify-between gap-4 rounded-2xl border border-border/60 bg-gradient-to-br from-background to-muted/40 p-4 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:-translate-y-[2px]">
+                  {/* accent line */}
+                  <div className="absolute left-0 top-0 h-full w-[3px] rounded-l-2xl bg-primary opacity-0 transition group-hover:opacity-100" />
+
+                  {/* LEFT */}
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <Globe className="w-4 h-4" />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium md:text-base">
+
+                    <div className="space-y-1">
+                      <p className="text-sm md:text-[15px] font-medium leading-snug line-clamp-2 transition-colors group-hover:text-primary">
                         {el.description}
                       </p>
-                      <div className="flex flex-col gap-0.5 opacity-60 md:flex-row md:items-center md:gap-2">
-                        <span className="hidden md:block">•</span>
-                        <p className="text-[0.65rem] md:text-xs">
-                          {new Date(el.date).toLocaleDateString()}
-                        </p>
-                      </div>
+
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(el.date).toLocaleDateString()}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="ml-auto flex items-center justify-end gap-1 text-end">
-                    <div className="flex flex-col items-center md:flex-row md:gap-4">
-                      <Badge
-                        variant="outline"
-                        className="mt-1 ml-auto rounded px-1.5 py-0 text-[0.6rem] md:mt-0 md:px-3 md:py-1.5 md:text-xs"
-                      >
-                        {el.category}
-                      </Badge>
-                    </div>
-                    <button>
+                  {/* RIGHT */}
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      variant="secondary"
+                      className="rounded-lg px-2 py-0.5 text-[10px] md:text-xs bg-primary/10 text-primary border-0"
+                    >
+                      {el.category}
+                    </Badge>
+
+                    <button className="opacity-40 transition group-hover:opacity-100">
                       <MoreVertical className="size-4" />
                     </button>
                   </div>

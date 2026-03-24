@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "../../components/ui/button";
+import { useLocation } from "react-router";
 
 interface SidebarProps {
   collapsed: boolean;
@@ -53,6 +54,9 @@ const navigation = [
 export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const params = useLocation();
+
+  console.log(params.pathname);
   return (
     <>
       <div className="fixed top-[0.8rem] left-3 z-60 md:hidden">
@@ -110,7 +114,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
                 href={item.href}
                 className={cn(
                   "group flex items-center rounded-sm border border-transparent p-3 text-sm font-medium transition-all duration-300 hover:scale-105",
-                  item.current
+                  item.href === params.pathname
                     ? "border-primary/30 from-primary/10 text-primary bg-gradient-to-br"
                     : "text-muted-foreground from-primary/10 hover:border-primary/30 hover:text-primary hover:bg-gradient-to-br",
                 )}
