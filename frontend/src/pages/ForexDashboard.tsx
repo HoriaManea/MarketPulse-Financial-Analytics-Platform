@@ -18,7 +18,6 @@ export default function ForexDashboard() {
         </div>
 
         <div className="grid grid-cols-1 gap-3 md:gap-6 lg:grid-cols-2">
-          {/* <TradingChart /> */}
           <RecentTransactions />
         </div>
       </div>

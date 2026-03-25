@@ -10,6 +10,7 @@ import { cryptoNewsService } from "../../externalApi/cryptoNewsService";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import type { ArticlesResponse } from "@/types/crypto";
+import TableSkeleton from "./table-skeleton";
 
 export default function RecentTransactions() {
   const { data } = useQuery<ArticlesResponse>({
@@ -26,6 +27,10 @@ export default function RecentTransactions() {
       link: el.link,
     };
   });
+
+  if (!news) {
+    return <TableSkeleton />;
+  }
 
   return (
     <>

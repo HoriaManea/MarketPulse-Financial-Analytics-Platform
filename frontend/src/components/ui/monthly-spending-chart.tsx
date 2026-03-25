@@ -12,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import TableSkeleton from "./table-skeleton";
 
 const data = [
   { name: "BTC", value: 52.3, color: "#f7931a" },
@@ -20,7 +21,6 @@ const data = [
   { name: "SOL", value: 3.1, color: "#00ffa3" },
   { name: "Others", value: 21.7, color: "#888888" },
 ];
-
 interface CustomTooltipProps {
   active?: boolean;
   payload?: Array<{
@@ -50,6 +50,9 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 };
 
 export default function MarketCapDominance() {
+  if (!data) {
+    return <TableSkeleton />;
+  }
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader>

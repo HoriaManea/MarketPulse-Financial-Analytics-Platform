@@ -10,6 +10,7 @@ import fetchCrypto from "../../externalApi/currentCryptoPriceService";
 import { useQuery } from "@tanstack/react-query";
 import type { Crypto } from "../../types/crypto";
 import { TokenETH, TokenBNB, TokenBTC, TokenSOL } from "@web3icons/react";
+import CryptoDashboardSkeleton from "./dashboard-skeleton";
 
 export default function StatsCards() {
   const { data } = useQuery<Crypto[]>({
@@ -45,6 +46,10 @@ export default function StatsCards() {
       gradient: "from-blue-500 to-cyan-400",
     };
   });
+
+  if (!stats) {
+    return <CryptoDashboardSkeleton />;
+  }
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-6 xl:grid-cols-4">

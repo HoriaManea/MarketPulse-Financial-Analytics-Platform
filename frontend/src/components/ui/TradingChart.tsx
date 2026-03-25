@@ -3,6 +3,7 @@ import { createChart, AreaSeries, CandlestickSeries } from "lightweight-charts";
 import { useQuery } from "@tanstack/react-query";
 import tradingViewCryptoService from "../../externalApi/tradingViewCryptoService.ts";
 import "../../index.css";
+import TableSkeleton from "./table-skeleton.tsx";
 
 const TradingChart = () => {
   const [crypto, setCryto] = useState("BTC");
@@ -70,6 +71,9 @@ const TradingChart = () => {
     return () => chart.remove();
   }, [data]);
 
+  if (!data) {
+    return <TableSkeleton />;
+  }
   return (
     <div
       ref={chartContainerRef}

@@ -10,7 +10,6 @@ import {
   Globe,
   Package,
   TrendingUp,
-  Newspaper,
   LogOut,
 } from "lucide-react";
 import { cn } from "../../lib/utils";
@@ -42,7 +41,6 @@ const navigation = [
     icon: TrendingUp,
     current: false,
   },
-  { name: "News", href: "/news-dashboard", icon: Newspaper, current: false },
   {
     name: "Settings",
     href: "/settings-dashboard",
@@ -56,7 +54,6 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
 
   const params = useLocation();
 
-  console.log(params.pathname);
   return (
     <>
       <div className="fixed top-[0.8rem] left-3 z-60 md:hidden">

@@ -47,13 +47,11 @@ export const QuickActions = memo(
           onAddUser();
           break;
         case "analytics":
-          console.log("Viewing analytics...");
           break;
         case "export":
           onExport();
           break;
         case "settings":
-          console.log("Opening settings...");
           break;
       }
     };

@@ -13,6 +13,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import lastTwelveMonthsService from "../../externalApi/lastTwelveMonthsService.ts";
 import type { LastYearCrypto } from "@/types/crypto";
+import TableSkeleton from "./table-skeleton.tsx";
 
 export default function IncomeExpenseChart() {
   const { data } = useQuery<LastYearCrypto[]>({
@@ -31,6 +32,10 @@ export default function IncomeExpenseChart() {
       net: Number(el[2]) - Number(el[3]),
     };
   });
+
+  if (!data) {
+    return <TableSkeleton />;
+  }
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader className="flex flex-col items-center justify-between gap-3 md:flex-row">

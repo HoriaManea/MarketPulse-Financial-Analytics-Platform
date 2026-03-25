@@ -5,7 +5,8 @@ import ForexDashboard from "./pages/ForexDashboard";
 import CommoditiesDashodard from "./pages/CommoditiesDashboard";
 import StocksDashboard from "./pages/StocksDashboard";
 import { Settings } from "lucide-react";
-import NewsDashboard from "./pages/NewsDashboard";
+import CryptoDashboardSkeleton from "./components/ui/dashboard-skeleton";
+import TableSkeleton from "./components/ui/table-skeleton";
 
 const router = createBrowserRouter([
   {
@@ -25,16 +26,16 @@ const router = createBrowserRouter([
     element: <StocksDashboard />,
   },
   {
-    path: "/news-dashboard",
-    element: <NewsDashboard />,
-  },
-  {
     path: "/settings-dashboard",
     element: <Settings />,
   },
   {
     path: "/login",
     element: <LogIn />,
+  },
+  {
+    path: "/skeleton",
+    element: <TableSkeleton />,
   },
 ]);
 
