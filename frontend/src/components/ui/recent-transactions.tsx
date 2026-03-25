@@ -6,7 +6,7 @@ import {
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { MoreVertical, Globe, Newspaper } from "lucide-react";
-import { cryptoNewsService } from "../../externalApi/cryptoNewsService";
+import { cryptoNewsService } from "../../externalApi/crypto/cryptoNewsService";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import type { ArticlesResponse } from "@/types/crypto";

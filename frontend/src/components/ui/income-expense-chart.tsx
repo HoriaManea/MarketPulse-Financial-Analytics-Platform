@@ -11,7 +11,7 @@ import {
   ChartTooltipContent,
 } from "../../components/ui/chart";
 import { useQuery } from "@tanstack/react-query";
-import lastTwelveMonthsService from "../../externalApi/lastTwelveMonthsService.ts";
+import lastTwelveMonthsService from "../../externalApi/crypto/lastTwelveMonthsService.ts";
 import type { LastYearCrypto } from "@/types/crypto";
 import TableSkeleton from "./table-skeleton.tsx";
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createChart, AreaSeries, CandlestickSeries } from "lightweight-charts";
 import { useQuery } from "@tanstack/react-query";
-import tradingViewCryptoService from "../../externalApi/tradingViewCryptoService.ts";
+import tradingViewCryptoService from "../../externalApi/crypto/tradingViewCryptoService.ts";
 import "../../index.css";
 import TableSkeleton from "./table-skeleton.tsx";
 
