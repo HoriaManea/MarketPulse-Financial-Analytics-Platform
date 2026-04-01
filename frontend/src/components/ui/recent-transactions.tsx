@@ -16,9 +16,10 @@ export default function RecentTransactions() {
   const { data } = useQuery<ArticlesResponse>({
     queryKey: ["cryptoNews"],
     queryFn: cryptoNewsService,
+    refetchInterval: 1200000,
   });
 
-  const news = data?.articles.map((el) => {
+  const news = data?.articles?.map((el) => {
     return {
       id: el.description,
       description: el.description,

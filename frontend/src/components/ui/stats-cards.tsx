@@ -16,7 +16,7 @@ export default function StatsCards() {
   const { data } = useQuery<Crypto[]>({
     queryKey: ["crypto"],
     queryFn: fetchCrypto,
-    refetchInterval: 1000,
+    refetchInterval: 1200000,
   });
 
   const stats = data?.map((el) => {

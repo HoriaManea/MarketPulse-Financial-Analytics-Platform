@@ -12,7 +12,7 @@ const TradingChart = () => {
   const { data } = useQuery({
     queryKey: ["cryptoLastYear", crypto, period],
     queryFn: () => tradingViewCryptoService({ crypto, period }),
-    refetchInterval: 122000,
+    refetchInterval: 1200000,
   });
 
   const chartContainerRef = useRef();

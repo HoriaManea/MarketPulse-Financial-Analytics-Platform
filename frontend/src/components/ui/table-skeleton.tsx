@@ -1,4 +1,3 @@
-import currentEurUsrService from "../../externalApi/forex/currentEurUsdService";
 import {
   Card,
   CardContent,
@@ -11,10 +10,6 @@ function SkeletonBox({ className = "" }: { className?: string }) {
     <div className={`animate-pulse rounded bg-gray-500/40 ${className}`} />
   );
 }
-
-const data = await currentEurUsrService();
-
-console.log(data);
 
 export default function TableSkeleton() {
   return (
