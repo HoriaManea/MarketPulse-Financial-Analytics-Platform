@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/forex-dashboard",
-    element: <ForexDashboard />,
+    element: <ForexDashboard  />,
   },
   {
     path: "/commodities-dashboard",
