@@ -21,7 +21,7 @@ export default function ForexStatsCards() {
   if (!data) {
     return <CryptoDashboardSkeleton />;
   }
-  console.log(data[0]);
+
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-6 xl:grid-cols-4">
       {data[0]?.map((el) => {

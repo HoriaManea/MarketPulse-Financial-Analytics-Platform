@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from rates import get_rates
-from forex import get_forex_stats, get_forex_dominance
+from forex import get_forex_stats, get_forex_dominance,get_forex_full_year
 
 app = FastAPI()
 
@@ -26,6 +26,9 @@ def forex():
     return get_forex_stats()
 
 @app.get("/forex-last-year-results")
-def forex():
+def forex_dominance():
     return get_forex_dominance()
 
+@app.get("/forex-full-year")
+def forex_full_year():
+    return get_forex_full_year()
