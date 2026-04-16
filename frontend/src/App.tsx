@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import LogIn from "./pages/LogIn";
+import LogIn from "./pages/Login";
 import CryptoDashboard from "./pages/CryptoDashboard";
 import ForexDashboard from "./pages/ForexDashboard";
-import CommoditiesDashodard from "./pages/CommoditiesDashboard";
+import CommoditiesDashodard from "./pages/CommoditiesDashodard";
 import StocksDashboard from "./pages/StocksDashboard";
 import { Settings } from "lucide-react";
 import TableSkeleton from "./components/ui/table-skeleton";
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/forex-dashboard",
-    element: <ForexDashboard  />,
+    element: <ForexDashboard />,
   },
   {
     path: "/commodities-dashboard",
