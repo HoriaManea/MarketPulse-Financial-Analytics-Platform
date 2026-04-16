@@ -1,26 +1,19 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./card.tsx";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "../../components/ui/chart";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./chart.tsx";
 import { useQuery } from "@tanstack/react-query";
-import lastTwelveMonthsService from "../../externalApi/crypto/lastTwelveMonthsService.ts";
 import type { LastYearCrypto } from "@/types/crypto";
 import TableSkeleton from "./table-skeleton.tsx";
+import fetchCryptoFullYear from "../../externalApi/crypto/fetchCryptoFullYear.ts";
 
-export default function IncomeExpenseChart() {
+export default function IncomeExpenseChartCrypto() {
   const { data } = useQuery<LastYearCrypto[]>({
     queryKey: ["cryptoLastYear"],
-    queryFn: lastTwelveMonthsService,
+    queryFn: fetchCryptoFullYear,
     refetchInterval: 86400000,
   });
+
+  console.log(data);
 
   const stats = data?.map((el) => {
     const month = new Date(el[0]).toLocaleString("en-US", { month: "short" });
@@ -39,7 +32,7 @@ export default function IncomeExpenseChart() {
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader className="flex flex-col items-center justify-between gap-3 md:flex-row">
-        <CardTitle>See Last Year Results</CardTitle>
+        <CardTitle>See Last Year BTC 🪙 Results</CardTitle>
         <div className="flex items-center justify-center gap-2">
           <div className="flex items-center gap-2">
             <div className="size-3 rounded-full bg-green-500"></div>

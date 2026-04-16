@@ -46,7 +46,7 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 
 export default function MarketCapDominance() {
   const { data } = useQuery({
-    queryKey: ["forexStats"],
+    queryKey: ["forexDominance"],
     queryFn: fetchForexDominance,
     refetchInterval: 1200000,
   });
