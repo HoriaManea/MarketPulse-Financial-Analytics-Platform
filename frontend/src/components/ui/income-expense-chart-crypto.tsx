@@ -32,7 +32,7 @@ export default function IncomeExpenseChartCrypto() {
   return (
     <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader className="flex flex-col items-center justify-between gap-3 md:flex-row">
-        <CardTitle>See Last Year BTC 🪙 Results</CardTitle>
+        <CardTitle>See Last Year BTC🪙 Results</CardTitle>
         <div className="flex items-center justify-center gap-2">
           <div className="flex items-center gap-2">
             <div className="size-3 rounded-full bg-green-500"></div>
