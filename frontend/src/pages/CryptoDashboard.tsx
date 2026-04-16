@@ -1,7 +1,7 @@
+import MarketCapDominanceCrypto from "../components/ui/monthly-spending-chart-crypto";
 import TradingChart from "../components/ui/crypto-trading-chart";
 import DashboardLayout from "../components/ui/dashboard-layout";
 import IncomeExpenseChartCrypto from "../components/ui/income-expense-chart-crypto";
-import MarketCapDominance from "../components/ui/monthly-spending-chart";
 import RecentTransactions from "../components/ui/recent-transactions";
 import StatsCards from "../components/ui/stats-cards";
 
@@ -13,7 +13,7 @@ export default function CryptoDashboard() {
 
         <div className="grid grid-cols-1 gap-3 md:gap-6 xl:grid-cols-2">
           <IncomeExpenseChartCrypto />
-          <MarketCapDominance />
+          <MarketCapDominanceCrypto />
         </div>
 
         <div className="grid grid-cols-1 gap-3 md:gap-6 lg:grid-cols-2">

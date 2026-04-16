@@ -14,7 +14,7 @@ import {
 } from "recharts";
 import TableSkeleton from "./table-skeleton";
 import { useQuery } from "@tanstack/react-query";
-import fetchForexDominance from "../../externalApi/forex/fetchForexDominance";
+import fetchCryptoDominance from "../../externalApi/crypto/fetchCryptoDominance";
 
 interface CustomTooltipProps {
   active?: boolean;
@@ -44,10 +44,10 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   return null;
 };
 
-export default function MarketCapDominance() {
+export default function MarketCapDominanceCrypto() {
   const { data } = useQuery({
     queryKey: ["forexDominance"],
-    queryFn: fetchForexDominance,
+    queryFn: fetchCryptoDominance,
     refetchInterval: 1200000,
   });
 
