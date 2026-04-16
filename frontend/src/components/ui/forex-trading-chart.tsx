@@ -5,7 +5,7 @@ import tradingViewCryptoService from "../../externalApi/crypto/tradingViewCrypto
 import "../../index.css";
 import TableSkeleton from "./table-skeleton.tsx";
 
-const TradingChart = () => {
+const ForexTradingChart = () => {
   const [crypto, setCryto] = useState("BTC");
   const [period, setPeriod] = useState("Last Month");
 
@@ -197,4 +197,4 @@ const TradingChart = () => {
   );
 };
 
-export default TradingChart;
+export default ForexTradingChart;
