@@ -1,4 +1,5 @@
-# Logs
+# FRONTEND
+
 logs
 *.log
 npm-debug.log*
@@ -11,15 +12,29 @@ node_modules
 dist
 dist-ssr
 *.local
-README.md
 
-# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
+Thumbs.db
+
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# BACKEND (Python)
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+env/
+.env
+
+*.sqlite3
+*.db
