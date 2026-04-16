@@ -1,4 +1,4 @@
-import TradingChart from "../components/ui/TradingChart";
+import TradingChart from "../components/ui/crypto-trading-chart";
 import DashboardLayout from "../components/ui/dashboard-layout";
 import IncomeExpenseChart from "../components/ui/income-expense-chart";
 import MarketCapDominance from "../components/ui/monthly-spending-chart";
