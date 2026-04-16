@@ -13,14 +13,8 @@ import {
   Legend,
 } from "recharts";
 import TableSkeleton from "./table-skeleton";
-
-const data = [
-  { name: "EUR/USD", value: 28, color: "#3b82f6" },
-  { name: "USD/JPY", value: 17, color: "#22c55e" },
-  { name: "GBP/USD", value: 13, color: "#a855f7" },
-  { name: "USD/CHF", value: 6, color: "#f97316" },
-  { name: "Others", value: 36, color: "#888888" },
-];
+import { useQuery } from "@tanstack/react-query";
+import fetchForexDominance from "../../externalApi/forex/fetchForexDominance";
 
 interface CustomTooltipProps {
   active?: boolean;
@@ -51,6 +45,12 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 };
 
 export default function MarketCapDominance() {
+  const { data } = useQuery({
+    queryKey: ["forexStats"],
+    queryFn: fetchForexDominance,
+    refetchInterval: 1200000,
+  });
+
   if (!data) {
     return <TableSkeleton />;
   }
