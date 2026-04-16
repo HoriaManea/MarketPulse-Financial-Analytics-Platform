@@ -15,12 +15,13 @@ import {
 import TableSkeleton from "./table-skeleton";
 
 const data = [
-  { name: "BTC", value: 52.3, color: "#f7931a" },
-  { name: "ETH", value: 18.7, color: "#627eea" },
-  { name: "BNB", value: 4.2, color: "#f3ba2f" },
-  { name: "SOL", value: 3.1, color: "#00ffa3" },
-  { name: "Others", value: 21.7, color: "#888888" },
+  { name: "EUR/USD", value: 28, color: "#3b82f6" },
+  { name: "USD/JPY", value: 17, color: "#22c55e" },
+  { name: "GBP/USD", value: 13, color: "#a855f7" },
+  { name: "USD/CHF", value: 6, color: "#f97316" },
+  { name: "Others", value: 36, color: "#888888" },
 ];
+
 interface CustomTooltipProps {
   active?: boolean;
   payload?: Array<{
@@ -87,12 +88,12 @@ export default function MarketCapDominance() {
 
         <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
           <div className="text-center">
-            <p className="text-2xl font-bold">$2.41T</p>
-            <p className="text-muted-foreground text-sm">Total Market Cap</p>
+            <p className="text-2xl font-bold">$7.5T</p>
+            <p className="text-muted-foreground text-sm">Daily Forex Volume</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-blue-500">$98B</p>
-            <p className="text-muted-foreground text-sm">24h Volume</p>
+            <p className="text-2xl font-bold text-blue-500">24h</p>
+            <p className="text-muted-foreground text-sm">Market Availability</p>
           </div>
         </div>
       </CardContent>
