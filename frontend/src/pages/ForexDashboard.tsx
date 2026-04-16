@@ -2,7 +2,8 @@ import ForexStatsCards from "../components/ui/forex-stats-card";
 import DashboardLayout from "../components/ui/dashboard-layout";
 import IncomeExpenseChart from "../components/ui/income-expense-chart";
 import MonthlySpendingChart from "../components/ui/monthly-spending-chart";
-import RecentTransactions from "../components/ui/recent-transactions";
+import ForexTradingChart from "../components/ui/forex-trading-chart";
+// import RecentTransactions from "../components/ui/recent-transactions";
 
 export default function ForexDashboard() {
   return (
@@ -11,12 +12,13 @@ export default function ForexDashboard() {
         <ForexStatsCards />
 
         <div className="grid grid-cols-1 gap-3 md:gap-6 xl:grid-cols-2">
-          <IncomeExpenseChart />
           <MonthlySpendingChart />
+          <IncomeExpenseChart />
         </div>
 
         <div className="grid grid-cols-1 gap-3 md:gap-6 lg:grid-cols-2">
-          <RecentTransactions />
+          {/* <RecentTransactions /> */}
+          <ForexTradingChart />
         </div>
       </div>
     </DashboardLayout>
