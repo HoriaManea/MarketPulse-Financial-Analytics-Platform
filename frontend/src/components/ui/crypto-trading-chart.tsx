@@ -74,12 +74,15 @@ const CryptoTradingChart = () => {
   if (!data) {
     return <TableSkeleton />;
   }
+
+  console.log(data);
+
   return (
     <div
       ref={chartContainerRef}
       style={{
         width: "100%",
-        height: "100%",
+        height: "400px", // 🔥 FIX
         background: "#0f172a",
         borderRadius: "10px",
         overflow: "hidden",

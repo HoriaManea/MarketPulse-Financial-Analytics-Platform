@@ -13,8 +13,6 @@ export default function IncomeExpenseChartForex() {
     refetchInterval: 86400000,
   });
 
-  console.log(data);
-
   const stats = data?.map((el) => {
     const month = new Date(el[0]).toLocaleString("en-US", { month: "short" });
 

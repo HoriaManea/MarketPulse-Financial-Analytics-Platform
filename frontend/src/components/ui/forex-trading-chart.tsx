@@ -1,58 +1,56 @@
 import { useEffect, useRef, useState } from "react";
-import { createChart, AreaSeries, CandlestickSeries } from "lightweight-charts";
+import { createChart, CandlestickSeries } from "lightweight-charts";
 import { useQuery } from "@tanstack/react-query";
-import tradingViewCryptoService from "../../externalApi/crypto/tradingViewCryptoService.ts";
 import "../../index.css";
 import TableSkeleton from "./table-skeleton.tsx";
+import fetchTradingViewForexService from "../../externalApi/forex/fetchTradingViewForexService.ts";
 
 const ForexTradingChart = () => {
-  const [crypto, setCryto] = useState("BTC");
-  const [period, setPeriod] = useState("Last Month");
+  const [pair, setPair] = useState("EURUSD");
+  const [period, setPeriod] = useState("Last Week");
 
   const { data } = useQuery({
-    queryKey: ["cryptoLastYear", crypto, period],
-    queryFn: () => tradingViewCryptoService({ crypto, period }),
+    queryKey: ["forexChart", pair, period],
+    queryFn: () => fetchTradingViewForexService({ pair, period }),
     refetchInterval: 1200000,
   });
 
-  const chartContainerRef = useRef();
+  const chartContainerRef = useRef(null);
+  const chartRef = useRef(null);
 
   useEffect(() => {
-    if (!data) return;
-    const chart = createChart(chartContainerRef.current, {
-      width: chartContainerRef.current.clientWidth,
-      height: 400,
+    if (!data || !chartContainerRef.current) return;
 
+    if (chartRef.current) {
+      chartRef.current.remove();
+      chartRef.current = null;
+    }
+
+    const chart = createChart(chartContainerRef.current, {
+      width: chartContainerRef.current.clientWidth || 600,
+      height: 400,
       layout: {
         background: { color: "#0f172a" },
         textColor: "#d1d4dc",
       },
-
       grid: {
         vertLines: { color: "#1f2937" },
         horzLines: { color: "#1f2937" },
       },
-
       rightPriceScale: {
         borderColor: "#374151",
       },
-
       timeScale: {
         borderColor: "#374151",
       },
     });
 
-    const areaSeries = chart.addSeries(AreaSeries);
+    chartRef.current = chart;
+
     const candleSeries = chart.addSeries(CandlestickSeries);
 
-    areaSeries.setData([
-      { time: "2018-12-29", value: 20 },
-      { time: "2018-12-30", value: 21 },
-      { time: "2018-12-31", value: 22.67 },
-    ]);
-
     const formattedData = data.map((el) => ({
-      time: Math.floor(el[0] / 1000),
+      time: new Date(el[0]).toISOString().slice(0, 10),
       open: parseFloat(el[1]),
       high: parseFloat(el[2]),
       low: parseFloat(el[3]),
@@ -61,19 +59,30 @@ const ForexTradingChart = () => {
 
     candleSeries.setData(formattedData);
 
-    const timeScale = chart.timeScale();
+    chart.timeScale().fitContent();
 
-    timeScale.setVisibleRange({
-      from: formattedData[0].time,
-      to: formattedData[formattedData.length - 1].time,
-    });
+    const handleResize = () => {
+      chart.applyOptions({
+        width: chartContainerRef.current.clientWidth,
+      });
+    };
 
-    return () => chart.remove();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+
+      if (chartRef.current) {
+        chartRef.current.remove();
+        chartRef.current = null;
+      }
+    };
   }, [data]);
 
   if (!data) {
     return <TableSkeleton />;
   }
+
   return (
     <div
       ref={chartContainerRef}
@@ -97,7 +106,6 @@ const ForexTradingChart = () => {
         <select
           style={{
             appearance: "none",
-            background: "linear-gradient(145deg, #0061fc, #0f172a)",
             color: "#e2e8f0",
             border: "1px solid #334155",
             borderRadius: "10px",
@@ -108,8 +116,6 @@ const ForexTradingChart = () => {
             outline: "none",
             boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
             transition: "all 0.2s ease",
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg fill='%23cbd5f5' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>\")",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "right 10px center",
           }}
@@ -121,25 +127,17 @@ const ForexTradingChart = () => {
           }
           onChange={(e) => setPeriod(e.target.value)}
         >
-          <option
-            value={"Last Month"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
+          <option value={"Last Month"} style={{ background: "#0f172a" }}>
             Last Month
           </option>
-          <option
-            value={"Last Week"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
+          <option value={"Last Week"} style={{ background: "#0f172a" }}>
             Last Week
           </option>
-          <option
-            value={"Last Day"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
+          <option value={"Last Day"} style={{ background: "#0f172a" }}>
             Last Day
           </option>
         </select>
+
         <select
           style={{
             appearance: "none",
@@ -165,31 +163,19 @@ const ForexTradingChart = () => {
           onBlur={(e) =>
             (e.target.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)")
           }
-          onChange={(e) => setCryto(e.target.value)}
+          onChange={(e) => setPair(e.target.value)}
         >
-          <option
-            value={"BTC"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
-            BTC
+          <option value={"EURUSD"} style={{ background: "#0f172a" }}>
+            EURUSD
           </option>
-          <option
-            value={"ETH"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
-            ETH
+          <option value={"GBPUSD"} style={{ background: "#0f172a" }}>
+            GBPUSD
           </option>
-          <option
-            value={"SOL"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
-            SOL
+          <option value={"USDJPY"} style={{ background: "#0f172a" }}>
+            USDJPY
           </option>
-          <option
-            value={"BNB"}
-            style={{ backgroundColor: "#0f172a", color: "#e2e8f0" }}
-          >
-            BNB
+          <option value={"USDCHF"} style={{ background: "#0f172a" }}>
+            USDCHF
           </option>
         </select>
       </div>

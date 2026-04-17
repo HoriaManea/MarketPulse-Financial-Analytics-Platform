@@ -28,3 +28,4 @@ def get_forex_dominance():
 
 def get_forex_full_year():
     return FOREX_FULL_YEAR
+
