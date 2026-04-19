@@ -29,18 +29,18 @@ const navigation = [
     current: true,
   },
   { name: "Forex", href: "/forex-dashboard", icon: Globe, current: false },
-  {
-    name: "Commodities",
-    href: "/commodities-dashboard",
-    icon: Package,
-    current: false,
-  },
-  {
-    name: "Stocks",
-    href: "/stocks-dashboard",
-    icon: TrendingUp,
-    current: false,
-  },
+  // {
+  //   name: "Commodities",
+  //   href: "/commodities-dashboard",
+  //   icon: Package,
+  //   current: false,
+  // },
+  // {
+  //   name: "Stocks",
+  //   href: "/stocks-dashboard",
+  //   icon: TrendingUp,
+  //   current: false,
+  // },
   {
     name: "Settings",
     href: "/settings-dashboard",

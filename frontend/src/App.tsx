@@ -2,10 +2,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LogIn from "./pages/Login";
 import CryptoDashboard from "./pages/CryptoDashboard";
 import ForexDashboard from "./pages/ForexDashboard";
-import CommoditiesDashodard from "./pages/CommoditiesDashodard";
-import StocksDashboard from "./pages/StocksDashboard";
+// import CommoditiesDashodard from "./pages/CommoditiesDashodard";
+// import StocksDashboard from "./pages/StocksDashboard";
 import { Settings } from "lucide-react";
-import TableSkeleton from "./components/ui/table-skeleton";
+// import TableSkeleton from "./components/ui/table-skeleton";
 
 const router = createBrowserRouter([
   {
@@ -16,14 +16,14 @@ const router = createBrowserRouter([
     path: "/forex-dashboard",
     element: <ForexDashboard />,
   },
-  {
-    path: "/commodities-dashboard",
-    element: <CommoditiesDashodard />,
-  },
-  {
-    path: "/stocks-dashboard",
-    element: <StocksDashboard />,
-  },
+  // {
+  //   path: "/commodities-dashboard",
+  //   element: <CommoditiesDashodard />,
+  // },
+  // {
+  //   path: "/stocks-dashboard",
+  //   element: <StocksDashboard />,
+  // },
   {
     path: "/settings-dashboard",
     element: <Settings />,
@@ -32,10 +32,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LogIn />,
   },
-  {
-    path: "/skeleton",
-    element: <TableSkeleton />,
-  },
+  // {
+  //   path: "/skeleton",
+  //   element: <TableSkeleton />,
+  // },
 ]);
 
 export default function App() {
