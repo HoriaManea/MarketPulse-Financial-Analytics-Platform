@@ -14,14 +14,14 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "../../components/ui/button";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 interface SidebarProps {
   collapsed: boolean;
   setCollapsed: Dispatch<SetStateAction<boolean>>;
 }
 
-const navigation = [
+const sidebarNavigation = [
   {
     name: "Cryptocurrencies",
     href: "/cryptocurrency-dashboard",
@@ -52,7 +52,14 @@ const navigation = [
 export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const navigation = useNavigate();
+
   const params = useLocation();
+
+  function handleLogOut() {
+    localStorage.removeItem("token");
+    navigation("/");
+  }
 
   return (
     <>
@@ -105,7 +112,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
 
           {/* Navigation */}
           <nav className="flex-1 space-y-2 p-2 pt-4 md:p-4">
-            {navigation.map((item) => (
+            {sidebarNavigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -168,7 +175,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
 
           {/* Footer */}
           {!collapsed && (
-            <div className="h-20 w-full border-t p-5">
+            <div className="h-20 w-full border-t p-5" onClick={handleLogOut}>
               <div className="border-primary/30 from-primary/20 text-primary flex items-center justify-center gap-2 w-full rounded-md border bg-gradient-to-b p-3 text-sm transition hover:bg-primary/10 cursor-pointer">
                 <LogOut className="w-4 h-4" />
                 <span>Log out</span>

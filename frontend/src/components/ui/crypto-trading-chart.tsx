@@ -75,8 +75,6 @@ const CryptoTradingChart = () => {
     return <TableSkeleton />;
   }
 
-  console.log(data);
-
   return (
     <div
       ref={chartContainerRef}

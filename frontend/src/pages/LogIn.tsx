@@ -1,8 +1,7 @@
 import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
 import { Card, CardContent } from "../components/ui/card";
 import { motion } from "framer-motion";
+import RegisterForm from "../components/ui/register-form";
 
 export default function LogIn() {
   return (
@@ -72,40 +71,7 @@ export default function LogIn() {
                 </motion.div>
 
                 {/* Email Input */}
-                <motion.div
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
-                >
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" />
-                </motion.div>
-
-                <motion.div
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-                >
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    className="border-border border"
-                  />
-                </motion.div>
-
-                {/* Continue Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button className="w-full">Continue</Button>
-                </motion.div>
+                <RegisterForm />
 
                 {/* Divider */}
                 <motion.div
